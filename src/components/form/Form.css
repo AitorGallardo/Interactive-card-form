@@ -1,3 +1,74 @@
-.form__container{
-    width: 50%;
+.form__container {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.form__third-row {
+  display: flex;
+  gap: 1rem;
+}
+
+.form__container-exp_date {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  border: none;
+}
+.form__third-row__second-field {
+  flex: 2;
+}
+.form__container-xp_date-label {
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+
+.form__container-exp_date-inputs {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.form__container-exp_date-inputs input {
+  width: 50%;
+  padding: 0.5rem;
+  border-radius: 6px;
+  font-size: 18px;
+  border: 1px solid grey;
+}
+
+.form__container-exp_date-inputs input:focus {
+  outline: none;
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: double 1px transparent;
+  background-image: linear-gradient(white, white),
+    linear-gradient(to right, var(--active-color-from), var(--active-color-to));
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+}
+
+.form__container-exp_date-inputs input:invalid {
+  border: 1px solid var(--error-color);
+}
+
+.form__container-exp_date span {
+    display: none;
+  font-size: 12px;
+  color: var(--error-color);
+}
+
+.form__button {
+  font-size: 16px;
+  padding: 0.6rem;
+  width: 100%;
+  border-radius: 6px;
+  outline: none;
+  border: none;
+  color: var(--white-color);
+  background-color: var(--very-dark-gray-violet-color);
+  margin-top: 1rem;
+  cursor: pointer;
 }

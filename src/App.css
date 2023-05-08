@@ -13,6 +13,7 @@ body {
   flex: 1;
   background-image: url('./assets/bg-main-desktop.png');
   background-repeat: no-repeat;
+  background-size: cover;
 }
 .app__container-background_right {
   flex: 2;

@@ -3,6 +3,7 @@
   flex-direction: column;
   gap: 0.25rem;
   border: none;
+  letter-spacing: 1px;
 }
 
 .input__label {
@@ -42,7 +43,11 @@ input:focus {
   background-clip: padding-box, border-box;
 }
 
-.input__error {
-  background: var(--error-color);
+input:invalid {
+  border: 1px solid var(--error-color);
 }
 
+.error-campo {
+  font-size: 12px;
+  color: var(--error-color);
+}
