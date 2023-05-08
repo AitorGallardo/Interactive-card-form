@@ -1,10 +1,5 @@
-body {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
 .app__container {
+  position: relative;
   display: flex;
   height: 100vh;
 }
@@ -20,4 +15,70 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.app__frontface_card-container,
+.app__backface_card-container {
+  position: absolute;
+}
+
+.app__frontface_card-container {
+  top: 20%;
+  left: 15%;
+  color: white;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: 447px;
+  height: 245px;
+  background-image: url('./assets/bg-card-front.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.app__frontface_card-container::after {
+  content: url('./assets/card-logo.svg');
+  position: absolute;
+  top: 27px;
+  left: 27px;
+}
+.app__frontface_card-content {
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  gap: 1rem;
+}
+.app__frontface_card-numbers {
+  font-size: 27px;
+  letter-spacing: 4px;
+}
+.app__frontface_card-content div {
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+  letter-spacing: 1px;
+}
+
+.app__frontface-card-image {
+  position: absolute;
+}
+
+.app__backface_card-container {
+  top: 50%;
+  left: 20%;
+  width: 447px;
+  height: 245px;
+  background-image: url('./assets/bg-card-back.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
+
+.app__backface_card-cvc {
+  font-size: 16px;
+  letter-spacing: 1px;
+  color: white;
+  position: absolute;
+  top: 45%;
+  right: 13%;
 }
