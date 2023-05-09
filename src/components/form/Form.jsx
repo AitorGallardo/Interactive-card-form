@@ -1,13 +1,10 @@
 import './Form.css';
-import {formatMaxNumber} from '../../helpers/formatMaxNumber'
-import { useField } from '../../hooks/useField';
+import { formatMaxNumber } from '../../helpers/formatMaxNumber';
 import { Input } from '../input/Input';
+import { useInitForm } from '../../hooks/useInitForm';
 
 export const Form = () => {
-
-
-  const carholderName = useField('text');
-  // const cardNumber = useField({ type: 'text', formatField });
+  const { cardName, cardNumber, cardDate1,cardDate2, cardCvc } = useInitForm();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -15,7 +12,6 @@ export const Form = () => {
     const formData = new FormData(form);
     const data = Object.fromEntries(formData.entries());
   };
-
 
   return (
     <form className='form__container' onSubmit={() => handleSubmit()}>
@@ -26,14 +22,14 @@ export const Form = () => {
         placeholder='e.g. Jane Appleseed'
         errMessage='Wrong format, characters only'
         pattern='^[A-Za-z ]+$'
-        {...carholderName}
+        {...cardName}
       />
       <Input
         id='number'
         name='number'
         label='card number'
         placeholder='e.g. 1234 6578 9123 0000'
-
+        {...cardNumber}
       />
       {/* <Input
           id='date'
@@ -54,12 +50,14 @@ export const Form = () => {
               min='1'
               max='12'
               placeholder='MM'
+              {...cardDate1}
             />
             <input
               type='number'
               onInput={formatMaxNumber}
               placeholder='YY'
               required
+              {...cardDate2}
             />
           </div>
           <span id='error-campo'>Este campo es obligatorio.</span>
@@ -71,6 +69,7 @@ export const Form = () => {
             label='cvc'
             placeholder='eg. 123'
             type='number'
+            {...cardCvc}
           />
         </div>
       </div>
