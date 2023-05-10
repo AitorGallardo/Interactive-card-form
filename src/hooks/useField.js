@@ -2,27 +2,27 @@ import { useState } from 'react';
 
 export const useField = ({ val = '', type, customOnChange }) => {
   const [value, setValue] = useState(val);
-  const [isValid, setisValid] = useState(true);
+  const [valid, setValid] = useState({ valid: true });
 
   const onChange = (event) => {
-    const value = event.target.value;
+    let value = event.target.value;
     const isValid = event.target.validity.valid;
-    setValue(value);
-    setisValid(isValid);
+    const mismatch = event.target.validity.patternMismatch;
+    const valueMissing = event.target.validity.valueMissing;
+
     if (customOnChange) {
-      customOnChange({value,isValid});
+      value = customOnChange({ value });
     }
-    // if(formatField){
-    //   // console.log('enrra ',);
-    //   const newValue = formatField(event.target.value);
-    //   setValue(newValue)
-    // }
+
+    setValue(value);
+    setValid({ isValid, mismatch, valueMissing });
+
   };
 
   return {
     type,
     value,
-    isValid,
+    valid,
     onChange,
   };
 };

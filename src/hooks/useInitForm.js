@@ -1,11 +1,20 @@
 import { useContext } from 'react';
 import { useField } from './useField';
 import { CreditCardContext } from '../context/CreditCardContext';
+import { formatCardNumber } from '../helpers/formatCardNumber';
 
 export const useInitForm = () => {
+
   const onChange = ({ field, value }) => {
     setCreditCardData((state) => ({ ...state, [field]: value }));
+    return value;
   };
+
+  const onChangeCardNumber = ({ field, value }) => {
+    const fromatedValue = formatCardNumber(value);
+    return onChange({ field, value:fromatedValue });
+  };
+
 
   const { creditCardData, setCreditCardData } = useContext(CreditCardContext);
 
@@ -15,9 +24,9 @@ export const useInitForm = () => {
     customOnChange: ({ value }) => onChange({ field: 'name', value }),
   });
   const cardNumber = useField({
-    type: 'number',
+    type: 'text',
     val: creditCardData.number,
-    customOnChange: ({ value }) => onChange({ field: 'number', value }),
+    customOnChange: ({ value }) => onChangeCardNumber({ field: 'number', value }),
   });
   const cardDate1 = useField({
     type: 'number',

@@ -1,0 +1,17 @@
+# Manejar mensajes de error en el form al enviar.
+    [x]. Que los campos no esten vacios
+    [x]. Tope de characters para el nombre, Trimear los espacios para q no dejen vacio
+    [x]. Correct card number format con characteres maximos
+    []. Valid date con calculo de date
+    []. Correct cvc con caracters maximos y solo numeros
+    
+    Mensajes de erro
+    . Todos. This field cannot be blank
+    . Number. Card number not valid.
+    . Date. Date not valid.
+    . Cvc. Cvc not valid.
+
+# Formatear el card number
+# See hover, active, and focus states for interactive elements on the page
+# Confirmar form con animacion y resetear form
+# Responsive

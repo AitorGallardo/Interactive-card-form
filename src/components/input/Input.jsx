@@ -1,15 +1,17 @@
 import PropTypes from 'prop-types';
 import './Input.css';
+
+const errorMessages = ['This field cannot be blank', 'Wrong format, '];
+
 export const Input = ({
   id,
   name,
   label,
   placeholder,
-  errMessage,
-  isRequired = false,
-  pattern='^(.|\n)*$',
+  isRequired = true,
+  pattern = '^(.|\n)*$',
   type,
-  isValid = true,
+  valid,
   ...props
 }) => {
   return (
@@ -26,7 +28,15 @@ export const Input = ({
         pattern={pattern}
         {...props}
       />
-      {!isValid && <span className='error-campo'>{errMessage}</span>}
+      {!valid.isValid && valid.valueMissing && (
+        <span className='error-campo'>{errorMessages[0]}</span>
+      )}
+      {!valid.isValid && valid.mismatch && (
+        <span className='error-campo'>
+          {errorMessages[1]}
+          {type} only
+        </span>
+      )}
     </fieldset>
   );
 };
@@ -39,6 +49,6 @@ Input.propTypes = {
   errMessage: PropTypes.string,
   isRequired: PropTypes.bool,
   pattern: PropTypes.string,
-  type: PropTypes.oneOf(['text', 'password', 'email','number']),
-  isValid: PropTypes.bool,
+  type: PropTypes.oneOf(['text', 'password', 'email', 'number']),
+  valid: PropTypes.object,
 };
