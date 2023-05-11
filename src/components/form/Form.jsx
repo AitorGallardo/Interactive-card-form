@@ -1,11 +1,14 @@
 import './Form.css';
 import { Input } from '../input/Input';
 import { useInitForm } from '../../hooks/useInitForm';
-import { formatMaxNumber } from '../../helpers/formatMaxNumber';
 import { trimCardName } from '../../helpers/trimCardName';
+import { isValidExpirationDate } from '../../helpers/isValidExpirationDate';
+import { DateInput } from '../dateInput/DateInput';
+import { useState } from 'react';
 
 export const Form = () => {
-  const { cardName, cardNumber, cardDate1, cardDate2, cardCvc } = useInitForm();
+  const { cardName, cardNumber, cardMonth, cardYear, cardCvc } = useInitForm();
+  const [isValidDate, setValidDate] = useState(true);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -13,12 +16,14 @@ export const Form = () => {
     const formData = new FormData(form);
     const data = Object.fromEntries(formData.entries());
     console.log('Data on Submit', data);
+    const isValidDate  = isValidExpirationDate(data.month, data.year);
+    setValidDate(isValidDate);
   };
 
-  const handleNameInputBlur = (event)=>{
+  const handleNameInputBlur = (event) => {
     const value = event.target.value;
     event.target.value = trimCardName(value);
-  }
+  };
 
   return (
     <form className='form__container' onSubmit={handleSubmit}>
@@ -40,43 +45,8 @@ export const Form = () => {
         maxLength={19}
         {...cardNumber}
       />
-      {/* <Input
-          id='date'
-          name='date'
-          label='exp.date(mm/yy)'
-          placeholder=''
-          type='date'
-        /> */}
       <div className='form__third-row'>
-        <fieldset className='form__container-exp_date'>
-          <label className='form__container-exp_date-label'>
-            exp.date(mm/yy)
-          </label>
-          <div className='form__container-exp_date-inputs'>
-            <input
-              name='date1'
-              id='date1'
-              type={cardDate1.type}
-              onInput={formatMaxNumber}
-              min='1'
-              max='12'
-              placeholder='MM'
-              value={cardDate1.value}
-              onChange={cardDate1.onChange}
-            />
-            <input
-              name='date2'
-              id='date2'
-              type={cardDate2.type}
-              onInput={formatMaxNumber}
-              placeholder='YY'
-              required
-              value={cardDate2.value}
-              onChange={cardDate2.onChange}
-            />
-          </div>
-          <span id='error-campo'>Este campo es obligatorio.</span>
-        </fieldset>
+        <DateInput month={cardMonth} year={cardYear} isValidDate={isValidDate} />
         <div className='form__third-row__second-field'>
           <Input
             id='cvc'

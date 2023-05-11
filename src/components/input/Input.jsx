@@ -29,10 +29,10 @@ export const Input = ({
         {...props}
       />
       {!valid.isValid && valid.valueMissing && (
-        <span className='error-campo'>{errorMessages[0]}</span>
+        <span className='error-field'>{errorMessages[0]}</span>
       )}
       {!valid.isValid && valid.mismatch && (
-        <span className='error-campo'>
+        <span className='error-field'>
           {errorMessages[1]}
           {type} only
         </span>

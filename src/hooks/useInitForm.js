@@ -28,12 +28,12 @@ export const useInitForm = () => {
     val: creditCardData.number,
     customOnChange: ({ value }) => onChangeCardNumber({ field: 'number', value }),
   });
-  const cardDate1 = useField({
+  const cardMonth = useField({
     type: 'number',
     val: creditCardData.date1,
     customOnChange: ({ value }) => onChange({ field: 'date1', value }),
   });
-  const cardDate2 = useField({
+  const cardYear = useField({
     type: 'number',
     val: creditCardData.date2,
     customOnChange: ({ value }) => onChange({ field: 'date2', value }),
@@ -46,8 +46,8 @@ export const useInitForm = () => {
   return {
     cardName,
     cardNumber,
-    cardDate1,
-    cardDate2,
+    cardMonth,
+    cardYear,
     cardCvc,
   };
 };

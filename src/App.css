@@ -82,3 +82,38 @@
   top: 45%;
   right: 13%;
 }
+
+
+.input__label {
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+input {
+  padding: 0.5rem;
+  border-radius: 6px;
+  font-size: 18px;
+  border: 1px solid grey;
+}
+
+input:focus {
+  outline: none;
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: double 1px transparent;
+  background-image: linear-gradient(white, white),
+    linear-gradient(to right, var(--active-color-from), var(--active-color-to));
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+}
+
+input:invalid {
+  border: 1px solid var(--error-color);
+}
+
+.error-field {
+  font-size: 12px;
+  color: var(--error-color);
+}
+
