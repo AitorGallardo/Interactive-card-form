@@ -60,15 +60,4 @@
   color: var(--error-color);
 }
 
-.form__button {
-  font-size: 16px;
-  padding: 0.6rem;
-  width: 100%;
-  border-radius: 6px;
-  outline: none;
-  border: none;
-  color: var(--white-color);
-  background-color: var(--very-dark-gray-violet-color);
-  margin-top: 1rem;
-  cursor: pointer;
-}
+

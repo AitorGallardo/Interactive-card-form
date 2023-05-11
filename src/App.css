@@ -97,7 +97,7 @@ input {
   border: 1px solid grey;
 }
 
-input:focus {
+input:focus, input:hover {
   outline: none;
   padding: 0.5rem;
   border-radius: 6px;
@@ -115,5 +115,22 @@ input:invalid {
 .error-field {
   font-size: 12px;
   color: var(--error-color);
+}
+
+button {
+  font-size: 16px;
+  padding: 0.6rem;
+  width: 100%;
+  border-radius: 6px;
+  outline: none;
+  border: none;
+  color: var(--white-color);
+  background-color: var(--very-dark-gray-violet-color);
+  margin-top: 1rem;
+  cursor: pointer;
+}
+
+button:hover{
+  opacity: .9;
 }
 

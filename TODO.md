@@ -15,6 +15,6 @@
     . Cvc. Cvc not valid.
 
 [x]# Formatear el card number
-# See hover, active, and focus states for interactive elements on the page
-# Confirmar form con animacion y resetear form
+[x]# See hover, active, and focus states for interactive elements on the page
+[x]# Confirmar form con animacion y resetear form
 # Responsive
