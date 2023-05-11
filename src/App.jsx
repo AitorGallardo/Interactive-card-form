@@ -16,7 +16,7 @@ function App() {
             </span>
             <div>
               <span className='app__frontface_card-name'>{creditCardData.name}</span>
-              <span className='app__frontface_card-date'>{creditCardData.date1}/{creditCardData.date2}</span>
+              <span className='app__frontface_card-date'>{creditCardData.month}/{creditCardData.year}</span>
             </div>
           </div>
         </div>

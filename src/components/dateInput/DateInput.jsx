@@ -27,7 +27,6 @@ export const DateInput = ({ month, year, isValidDate }) => {
         <input
           name='month'
           id='month'
-          onInput={formatMaxNumber}
           min='1'
           max='12'
           placeholder='MM'
@@ -37,7 +36,6 @@ export const DateInput = ({ month, year, isValidDate }) => {
         <input
           name='year'
           id='year'
-          onInput={formatMaxNumber}
           placeholder='YY'
           required
           {...year}

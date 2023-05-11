@@ -5,8 +5,8 @@ import { CreditCardContext } from "./CreditCardContext";
 const initCreditCard = {
   name: 'Jane Appleseed',
   number: '0000000000000000',
-  date1: '00',
-  date2: '00',
+  month: '00',
+  year: '00',
   cvc: '000',
 }
 

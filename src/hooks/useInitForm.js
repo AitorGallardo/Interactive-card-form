@@ -2,9 +2,9 @@ import { useContext } from 'react';
 import { useField } from './useField';
 import { CreditCardContext } from '../context/CreditCardContext';
 import { formatCardNumber } from '../helpers/formatCardNumber';
+import { formatMaxNumber } from '../helpers/formatMaxNumber';
 
 export const useInitForm = () => {
-
   const onChange = ({ field, value }) => {
     setCreditCardData((state) => ({ ...state, [field]: value }));
     return value;
@@ -12,9 +12,12 @@ export const useInitForm = () => {
 
   const onChangeCardNumber = ({ field, value }) => {
     const fromatedValue = formatCardNumber(value);
-    return onChange({ field, value:fromatedValue });
+    return onChange({ field, value: fromatedValue });
   };
-
+  const onChangeMaxNumber = ({ field, value, maxNumber }) => {
+    const fromatedValue = formatMaxNumber(value, maxNumber);
+    return onChange({ field, value: fromatedValue });
+  };
 
   const { creditCardData, setCreditCardData } = useContext(CreditCardContext);
 
@@ -26,22 +29,26 @@ export const useInitForm = () => {
   const cardNumber = useField({
     type: 'text',
     val: creditCardData.number,
-    customOnChange: ({ value }) => onChangeCardNumber({ field: 'number', value }),
+    customOnChange: ({ value }) =>
+      onChangeCardNumber({ field: 'number', value }),
   });
   const cardMonth = useField({
     type: 'number',
     val: creditCardData.date1,
-    customOnChange: ({ value }) => onChange({ field: 'date1', value }),
+    customOnChange: ({ value }) =>
+      onChangeMaxNumber({ field: 'month', value, maxNumber: 2 }),
   });
   const cardYear = useField({
     type: 'number',
     val: creditCardData.date2,
-    customOnChange: ({ value }) => onChange({ field: 'date2', value }),
+    customOnChange: ({ value }) =>
+      onChangeMaxNumber({ field: 'year', value, maxNumber: 2 }),
   });
   const cardCvc = useField({
     type: 'number',
     val: creditCardData.cvc,
-    customOnChange: ({ value }) => onChange({ field: 'cvc', value }),
+    customOnChange: ({ value }) =>
+      onChangeMaxNumber({ field: 'cvc', value, maxNumber: 4 }),
   });
   return {
     cardName,

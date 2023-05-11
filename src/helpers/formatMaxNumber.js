@@ -1,5 +1,3 @@
-export const formatMaxNumber = (event, maxNumber=2) => {
-  const input = event.currentTarget;
-  if (input.value.length > maxNumber)
-    input.value = input.value.slice(0, maxNumber);
+export const formatMaxNumber = (value, maxNumber = 2) => {
+  return value.length > maxNumber ? value.slice(0, maxNumber) : value;
 };

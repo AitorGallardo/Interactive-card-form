@@ -53,7 +53,8 @@ export const Form = () => {
             name='cvc'
             label='cvc'
             placeholder='eg. 123'
-            type='number'
+            min='100'
+            max='9999'
             {...cardCvc}
           />
         </div>
