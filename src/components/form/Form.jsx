@@ -5,6 +5,7 @@ import { trimCardName } from '../../helpers/trimCardName';
 import { isValidExpirationDate } from '../../helpers/isValidExpirationDate';
 import { DateInput } from '../dateInput/DateInput';
 import { useState } from 'react';
+import { Simulate } from 'react-dom/test-utils';
 
 export const Form = () => {
   const { cardName, cardNumber, cardMonth, cardYear, cardCvc } = useInitForm();
@@ -13,11 +14,19 @@ export const Form = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     const form = event.currentTarget;
+    // console.log('este forrrrm',form.elements)
+    Array.from(form.elements).map((el) => {
+      el.required = true;
+      Simulate.change(el);
+    });
+
     const formData = new FormData(form);
     const data = Object.fromEntries(formData.entries());
     console.log('Data on Submit', data);
-    const isValidDate  = isValidExpirationDate(data.month, data.year);
-    setValidDate(isValidDate);
+    if (data.month && data.year) {
+      const isValidDate = isValidExpirationDate(data.month, data.year);
+      setValidDate(isValidDate);
+    }
   };
 
   const handleNameInputBlur = (event) => {
@@ -26,7 +35,7 @@ export const Form = () => {
   };
 
   return (
-    <form className='form__container' onSubmit={handleSubmit}>
+    <form className='form__container' onSubmit={handleSubmit} noValidate>
       <Input
         id='carholderName'
         name='carholderName'
@@ -46,7 +55,11 @@ export const Form = () => {
         {...cardNumber}
       />
       <div className='form__third-row'>
-        <DateInput month={cardMonth} year={cardYear} isValidDate={isValidDate} />
+        <DateInput
+          month={cardMonth}
+          year={cardYear}
+          isValidDate={isValidDate}
+        />
         <div className='form__third-row__second-field'>
           <Input
             id='cvc'

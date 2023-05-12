@@ -3,6 +3,7 @@ import { useState } from 'react';
 export const useField = ({ val = '', type, customOnChange }) => {
   const [value, setValue] = useState(val);
   const [valid, setValid] = useState({ valid: true });
+  const [isPristine, setIsPristine] = useState(true);
 
   const onChange = (event) => {
     let value = event.target.value;
@@ -16,6 +17,11 @@ export const useField = ({ val = '', type, customOnChange }) => {
 
     setValue(value);
     setValid({ isValid, mismatch, valueMissing });
+
+    if(isPristine){
+      event.target.required = true
+      setIsPristine(false)
+    }
 
   };
 

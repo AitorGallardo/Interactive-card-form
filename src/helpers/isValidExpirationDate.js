@@ -1,4 +1,5 @@
 export function isValidExpirationDate(month, year) {
+
   // We do -1 cause Date constructor's month argument is zero-based
   const inputDate = new Date(Number(year) + 2000, Number(month) - 1);
 

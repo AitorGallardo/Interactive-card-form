@@ -1,27 +1,28 @@
 import './DateInput.css';
 import PropTypes from 'prop-types';
-import { formatMaxNumber } from '../../helpers/formatMaxNumber';
 
 const errorMessages = ['This field cannot be blank', 'Wrong format', 'Not a valid expiration date'];
 
-export const DateInput = ({ month, year, isValidDate }) => {
+export const DateInput = ({ month, year, isValidDate=true }) => {
   const {
-    isValid: isValidMonth,
+    isValid: isValidMonth=true,
     mismatch: mismatchMonth,
     valueMissing: valueMissingMonth,
   } = month.valid;
   const {
-    isValid: isValidYear,
+    isValid: isValidYear=true,
     mismatch: mismatchYear,
     valueMissing: valueMissingYear,
   } = year.valid;
 
+  const isNotValid=(!isValidMonth || !isValidYear);
+
   const isShowingBlankErrorMessage =
-    (!isValidMonth || !isValidYear) && (valueMissingMonth || valueMissingYear);
+    isNotValid && (valueMissingMonth || valueMissingYear);
   const isShowingMismatchErrorMessage =
-    (!isValidMonth || !isValidYear) && (mismatchYear || mismatchMonth);
+    isNotValid && (mismatchYear || mismatchMonth);
   return (
-    <fieldset className='date_input-container'>
+    <fieldset className={`date_input-container ${isNotValid ? 'expanded' : ''}`}>
       <label className='input__label'>exp.date(mm/yy)</label>
       <div className='date_input-inputs'>
         <input
@@ -30,14 +31,12 @@ export const DateInput = ({ month, year, isValidDate }) => {
           min='1'
           max='12'
           placeholder='MM'
-          required
           {...month}
         />
         <input
           name='year'
           id='year'
           placeholder='YY'
-          required
           {...year}
         />
       </div>

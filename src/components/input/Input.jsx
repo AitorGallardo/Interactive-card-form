@@ -8,18 +8,20 @@ export const Input = ({
   name,
   label,
   placeholder,
-  isRequired = true,
+  isRequired,
   pattern = '^(.|\n)*$',
   type,
   valid,
   ...props
 }) => {
+  const { isValid = true, valueMissing, mismatch } = valid;
   return (
-    <fieldset className='input__container'>
+    <fieldset className={`input__container ${!isValid ? 'expanded' : ''}`}>
       <label className='input__label' htmlFor={id}>
         {label}
       </label>
       <input
+        className={isValid ? '' : 'invalid'}
         type={type}
         id={id}
         name={name}
@@ -28,10 +30,10 @@ export const Input = ({
         pattern={pattern}
         {...props}
       />
-      {!valid.isValid && valid.valueMissing && (
+      {!isValid && valueMissing && (
         <span className='error-field'>{errorMessages[0]}</span>
       )}
-      {!valid.isValid && valid.mismatch && (
+      {!isValid && mismatch && (
         <span className='error-field'>
           {errorMessages[1]}
           {type} only

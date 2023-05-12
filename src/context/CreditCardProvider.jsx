@@ -3,11 +3,11 @@ import { CreditCardContext } from "./CreditCardContext";
 
 
 const initCreditCard = {
-  name: 'Jane Appleseed',
-  number: '0000000000000000',
-  month: '00',
-  year: '00',
-  cvc: '000',
+  name: '',
+  number: '',
+  month: '',
+  year: '',
+  cvc: '',
 }
 
 export const CreditCardProvider = ({ children }) => {
