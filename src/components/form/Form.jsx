@@ -6,27 +6,55 @@ import { isValidExpirationDate } from '../../helpers/isValidExpirationDate';
 import { DateInput } from '../dateInput/DateInput';
 import { useState } from 'react';
 import { Simulate } from 'react-dom/test-utils';
+import { useContext } from 'react';
+import { CreditCardContext } from '../../context/CreditCardContext';
 
 export const Form = () => {
+  const { creditCardData, setCreditCardData } = useContext(CreditCardContext);
+
   const { cardName, cardNumber, cardMonth, cardYear, cardCvc } = useInitForm();
   const [isValidDate, setValidDate] = useState(true);
+
+  const {isSuccessSubmit,isFirstRender} = creditCardData;
 
   const handleSubmit = (event) => {
     event.preventDefault();
     const form = event.currentTarget;
-    // console.log('este forrrrm',form.elements)
-    Array.from(form.elements).map((el) => {
-      el.required = true;
-      Simulate.change(el);
-    });
+    // Array.from(form.elements).map((el) => {
+    //   el.required = true;
+    //   // Simulation an on change on input to get validity values on components and then display erros based on them
+    //   Simulate.change(el);
+    // });
 
     const formData = new FormData(form);
     const data = Object.fromEntries(formData.entries());
-    console.log('Data on Submit', data);
-    if (data.month && data.year) {
-      const isValidDate = isValidExpirationDate(data.month, data.year);
-      setValidDate(isValidDate);
+    console.log('data', data);
+
+    const isValidForm = checkFormValidation(data);
+    if(isFirstRender){
+      setCreditCardData((state)=>({...state,isFirstRender:false}))
     }
+    setCreditCardData((state) => ({ ...state, isSuccessSubmit:true }));
+    setTimeout(function() {
+      setCreditCardData((state) => ({ ...state, isSuccessSubmit:false }));
+      // Code to execute after 2.5 seconds
+    }, 2500);
+    if (isValidForm) {
+
+    }
+  };
+
+  const checkFormValidation = ({ carholderName, number, month, year, cvc }) => {
+    const isValidCardholderName = carholderName.length > 0;
+    const isValidNumber = number.lenght >= 16;
+    const isValidCvc = cvc.length >= 3 && cvc.length <= 4;
+
+    const hasDate = month && year;
+
+    const isValidDate = hasDate ? isValidExpirationDate(month, year) : false;
+    setValidDate(isValidDate);
+
+    return isValidCardholderName && isValidNumber && isValidCvc & isValidDate;
   };
 
   const handleNameInputBlur = (event) => {
@@ -72,9 +100,14 @@ export const Form = () => {
           />
         </div>
       </div>
-      <button type='submit' className='form__button'>
-        Confirm
+      <button
+        type='submit'
+      >
+
+        {!creditCardData.isSuccessSubmit && 'Confirm'}
+        {isSuccessSubmit && 'Continue'}
       </button>
+
     </form>
   );
 };

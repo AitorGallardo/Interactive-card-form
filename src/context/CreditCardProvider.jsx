@@ -1,6 +1,5 @@
-import { useState } from "react";
-import { CreditCardContext } from "./CreditCardContext";
-
+import { useState } from 'react';
+import { CreditCardContext } from './CreditCardContext';
 
 const initCreditCard = {
   name: '',
@@ -8,7 +7,9 @@ const initCreditCard = {
   month: '',
   year: '',
   cvc: '',
-}
+  isSuccessSubmit: false,
+  isFirstRender:true,
+};
 
 export const CreditCardProvider = ({ children }) => {
   const [creditCardData, setCreditCardData] = useState(initCreditCard);
