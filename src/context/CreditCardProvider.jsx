@@ -15,7 +15,7 @@ export const CreditCardProvider = ({ children }) => {
   const [creditCardData, setCreditCardData] = useState(initCreditCard);
 
   return (
-    <CreditCardContext.Provider value={{ creditCardData, setCreditCardData }}>
+    <CreditCardContext.Provider value={{ creditCardData, setCreditCardData,initCreditCard }}>
       {children}
     </CreditCardContext.Provider>
   );

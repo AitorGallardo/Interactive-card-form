@@ -8,53 +8,88 @@ import { useState } from 'react';
 import { Simulate } from 'react-dom/test-utils';
 import { useContext } from 'react';
 import { CreditCardContext } from '../../context/CreditCardContext';
+import { formatCardNumberNoSpaces } from '../../helpers/formatCardNumber';
 
 export const Form = () => {
   const { creditCardData, setCreditCardData } = useContext(CreditCardContext);
 
-  const { cardName, cardNumber, cardMonth, cardYear, cardCvc } = useInitForm();
+  const { cardName, cardNumber, cardMonth, cardYear, cardCvc, resetPristine } =
+    useInitForm();
   const [isValidDate, setValidDate] = useState(true);
 
-  const {isSuccessSubmit,isFirstRender} = creditCardData;
+  const { isFirstRender } = creditCardData;
 
   const handleSubmit = (event) => {
     event.preventDefault();
     const form = event.currentTarget;
-    // Array.from(form.elements).map((el) => {
-    //   el.required = true;
-    //   // Simulation an on change on input to get validity values on components and then display erros based on them
-    //   Simulate.change(el);
-    // });
-
     const formData = new FormData(form);
     const data = Object.fromEntries(formData.entries());
+
     console.log('data', data);
 
-    const isValidForm = checkFormValidation(data);
-    if(isFirstRender){
-      setCreditCardData((state)=>({...state,isFirstRender:false}))
-    }
-    setCreditCardData((state) => ({ ...state, isSuccessSubmit:true }));
-    setTimeout(function() {
-      setCreditCardData((state) => ({ ...state, isSuccessSubmit:false }));
-      // Code to execute after 2.5 seconds
-    }, 2500);
-    if (isValidForm) {
+    triggerRequiredForm(form);
 
+    const isValidForm = checkFormValidation(data);
+
+    if (isValidForm) {
+      const inputs = form.querySelectorAll('input');
+      inputs.forEach((input) => {
+        input.value = '';
+        input.required = false;
+        Simulate.change(input);
+        resetPristine();
+      });
+      showSuccesSubmitMessage();
     }
   };
 
-  const checkFormValidation = ({ carholderName, number, month, year, cvc }) => {
-    const isValidCardholderName = carholderName.length > 0;
-    const isValidNumber = number.lenght >= 16;
+  // This is a solution to not trigger error input css on first log in the form cause they are blank.
+  const triggerRequiredForm = (form) => {
+    Array.from(form.elements).map((el) => {
+      el.required = true;
+      // Simulation an on change on input to get validity values on components and then display erros based on them
+      Simulate.change(el);
+    });
+  };
+
+  const showSuccesSubmitMessage = () => {
+    if (isFirstRender) {
+      setCreditCardData((state) => ({ ...state, isFirstRender: false }));
+    }
+    setCreditCardData((state) => ({ ...state, isSuccessSubmit: true }));
+    const submitMessageTimer = setTimeout(() => {
+      setCreditCardData((state) => ({ ...state, isSuccessSubmit: false }));
+      clearTimeout(submitMessageTimer);
+    }, 2500);
+  };
+  const checkFormValidation = ({
+    cardholderName,
+    number,
+    month,
+    year,
+    cvc,
+  }) => {
+
+    console.log('con todo ',{
+      cardholderName,
+      number,
+      month,
+      year,
+      cvc,
+    });
+    number = formatCardNumberNoSpaces(number);
+    const isValidCardholderName = cardholderName.length > 0;
+    const isValidNumber = number.length >= 16;
     const isValidCvc = cvc.length >= 3 && cvc.length <= 4;
+    const hasDate = month.length>0 && year.length>0;
+    let isValidDate = false;
 
-    const hasDate = month && year;
+    if(hasDate){
+      isValidDate = isValidExpirationDate(month, year);
+      setValidDate(isValidDate);
+    }
 
-    const isValidDate = hasDate ? isValidExpirationDate(month, year) : false;
-    setValidDate(isValidDate);
-
-    return isValidCardholderName && isValidNumber && isValidCvc & isValidDate;
+    return isValidCardholderName && isValidNumber && isValidCvc && isValidDate;
   };
 
   const handleNameInputBlur = (event) => {
@@ -65,9 +100,9 @@ export const Form = () => {
   return (
     <form className='form__container' onSubmit={handleSubmit} noValidate>
       <Input
-        id='carholderName'
-        name='carholderName'
-        label='carholder name'
+        id='cardholderName'
+        name='cardholderName'
+        label='cardholder name'
         placeholder='e.g. Jane Appleseed'
         pattern='^[A-Za-z ]+$'
         maxLength={30}
@@ -100,14 +135,7 @@ export const Form = () => {
           />
         </div>
       </div>
-      <button
-        type='submit'
-      >
-
-        {!creditCardData.isSuccessSubmit && 'Confirm'}
-        {isSuccessSubmit && 'Continue'}
-      </button>
-
+      <button type='submit'>Confirm</button>
     </form>
   );
 };

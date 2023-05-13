@@ -25,10 +25,17 @@ export const useField = ({ val = '', type, customOnChange }) => {
 
   };
 
+  const handlePristine = ()=>{
+    setIsPristine(true)
+  }
+
+ 
+
   return {
     type,
     value,
     valid,
     onChange,
+    handlePristine
   };
 };

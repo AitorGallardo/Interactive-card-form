@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const errorMessages = ['This field cannot be blank', 'Wrong format', 'Not a valid expiration date'];
 
-export const DateInput = ({ month, year, isValidDate=true }) => {
+export const DateInput = ({ month, year, isValidDate=true, }) => {
   const {
     isValid: isValidMonth=true,
     mismatch: mismatchMonth,

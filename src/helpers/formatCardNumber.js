@@ -9,3 +9,7 @@ export const formatCardNumber = (value) => {
   // Join the groups with spaces and return the result
   return groups ? groups.join(' ') : '';
 };
+
+export const formatCardNumberNoSpaces = (value) => {
+  return value.replace(/[^0-9]/g, '');
+}
