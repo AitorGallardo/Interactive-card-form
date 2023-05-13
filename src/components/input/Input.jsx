@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import './Input.css';
 
-const errorMessages = ['This field cannot be blank', 'Wrong format, '];
+const errorMessages = ['This field cannot be blank', 'Wrong format', 'Card number not valid'];
 
 export const Input = ({
   id,
@@ -14,7 +14,7 @@ export const Input = ({
   valid,
   ...props
 }) => {
-  const { isValid = true, valueMissing, mismatch } = valid;
+  const { isValid = true, valueMissing, mismatch ,outOfRange} = valid;
 
 
 
@@ -40,6 +40,11 @@ export const Input = ({
         <span className='error-field'>
           {errorMessages[1]}
           {type} only
+        </span>
+      )}
+      {!isValid && outOfRange && (
+        <span className='error-field'>
+          {errorMessages[2]}
         </span>
       )}
     </fieldset>

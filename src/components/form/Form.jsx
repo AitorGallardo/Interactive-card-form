@@ -13,8 +13,16 @@ import { formatCardNumberNoSpaces } from '../../helpers/formatCardNumber';
 export const Form = () => {
   const { creditCardData, setCreditCardData } = useContext(CreditCardContext);
 
-  const { cardName, cardNumber, cardMonth, cardYear, cardCvc, resetPristine } =
-    useInitForm();
+  const {
+    cardName,
+    cardNumber,
+    cardMonth,
+    cardYear,
+    cardCvc,
+    resetPristine,
+    setCardNumberValid,
+    setCardCvcValid,
+  } = useInitForm();
   const [isValidDate, setValidDate] = useState(true);
 
   const { isFirstRender } = creditCardData;
@@ -69,8 +77,7 @@ export const Form = () => {
     year,
     cvc,
   }) => {
-
-    console.log('con todo ',{
+    console.log('con todo ', {
       cardholderName,
       number,
       month,
@@ -81,10 +88,16 @@ export const Form = () => {
     const isValidCardholderName = cardholderName.length > 0;
     const isValidNumber = number.length >= 16;
     const isValidCvc = cvc.length >= 3 && cvc.length <= 4;
-    const hasDate = month.length>0 && year.length>0;
+    const hasDate = month.length > 0 && year.length > 0;
     let isValidDate = false;
 
-    if(hasDate){
+    if (!isValidCvc) {
+      setCardCvcValid({ isValid: false, outOfRange: true });
+    }
+    if (!isValidNumber) {
+      setCardNumberValid({ isValid: false, outOfRange: true });
+    }
+    if (hasDate) {
       isValidDate = isValidExpirationDate(month, year);
       setValidDate(isValidDate);
     }

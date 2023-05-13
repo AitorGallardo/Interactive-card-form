@@ -7,12 +7,20 @@ import { formatMonthNumber } from '../helpers/formatMonthNumber';
 
 export const useInitForm = () => {
   const resetPristine = () => {
-    cardNameHandlePristine();
-    cardNumberHandlePristine();
-    cardMonthHandlePristine();
-    cardYearHandlePristine();
-    cardCvcHandlePristine();
+    handleCardNamePristine();
+    handleCardNumberPristine();
+    handleCardMonthPristine();
+    handleCardYearPristine();
+    handleCardCvcPristine();
   };
+
+  const setCardNumberValid = (value)=>{
+    handleCardNumberValid(value)
+  }
+  const setCardCvcValid = (value)=>{
+    handleCardCvcValid(value)
+  }
+
 
   const onChange = ({ field, value }) => {
     setCreditCardData((state) => ({ ...state, [field]: value }));
@@ -35,30 +43,30 @@ export const useInitForm = () => {
 
   const { creditCardData, setCreditCardData } = useContext(CreditCardContext);
 
-  const { handlePristine: cardNameHandlePristine, ...cardName } = useField({
+  const { handlePristine: handleCardNamePristine,handleValid: handleCardNameValid, ...cardName } = useField({
     type: 'text',
     val: creditCardData.name,
     customOnChange: ({ value }) => onChange({ field: 'name', value }),
   });
-  const { handlePristine: cardNumberHandlePristine, ...cardNumber } = useField({
+  const { handlePristine: handleCardNumberPristine,handleValid: handleCardNumberValid, ...cardNumber } = useField({
     type: 'text',
     val: creditCardData.number,
     customOnChange: ({ value }) =>
       onChangeCardNumber({ field: 'number', value }),
   });
-  const { handlePristine: cardMonthHandlePristine, ...cardMonth } = useField({
+  const { handlePristine: handleCardMonthPristine,handleValid: handleCardMonthValid, ...cardMonth } = useField({
     type: 'number',
     val: creditCardData.month,
     customOnChange: ({ value }) =>
       onChangeFormatMonthNumber({ field: 'month', value, maxNumber: 2 }),
   });
-  const { handlePristine: cardYearHandlePristine, ...cardYear } = useField({
+  const { handlePristine: handleCardYearPristine,handleValid: handleCardYearValid, ...cardYear } = useField({
     type: 'number',
     val: creditCardData.year,
     customOnChange: ({ value }) =>
       onChangeFormatNumberLength({ field: 'year', value, maxNumber: 2 }),
   });
-  const { handlePristine: cardCvcHandlePristine, ...cardCvc } = useField({
+  const { handlePristine: handleCardCvcPristine,handleValid: handleCardCvcValid, ...cardCvc } = useField({
     type: 'number',
     val: creditCardData.cvc,
     customOnChange: ({ value }) =>
@@ -71,5 +79,7 @@ export const useInitForm = () => {
     cardYear,
     cardCvc,
     resetPristine,
+    setCardNumberValid,
+    setCardCvcValid
   };
 };
