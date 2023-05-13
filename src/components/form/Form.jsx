@@ -77,13 +77,7 @@ export const Form = () => {
     year,
     cvc,
   }) => {
-    console.log('con todo ', {
-      cardholderName,
-      number,
-      month,
-      year,
-      cvc,
-    });
+
     number = formatCardNumberNoSpaces(number);
     const isValidCardholderName = cardholderName.length > 0;
     const isValidNumber = number.length >= 16;

@@ -16,7 +16,7 @@
 
 [x]# Formatear el card number
 [x]# See hover, active, and focus states for interactive elements on the page
-[]# Confirmar form con animacion y resetear form
+[x]# Confirmar form con animacion y resetear form
     validar formulario
     animacion de okey
     reset form

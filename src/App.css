@@ -1,11 +1,15 @@
 .app__container {
-  position: relative;
+  /* position: relative; */
   display: flex;
   height: 100vh;
 }
 
 .app__container-background_left {
   flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
   background-image: url('./assets/bg-main-desktop.png');
   background-repeat: no-repeat;
   background-size: cover;
@@ -24,30 +28,40 @@
   flex: 2;
 }
 
+.app__cards-container {
+  position: relative;
+  width: 50%;
+  height: 50%;
+}
+
 .app__frontface_card-container,
 .app__backface_card-container {
   position: absolute;
+  width: 447px;
+  height: 245px;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
 .app__frontface_card-container {
-  top: 20%;
-  left: 15%;
   color: white;
   z-index: 1;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  width: 447px;
-  height: 245px;
   background-image: url('./assets/bg-card-front.png');
-  background-repeat: no-repeat;
-  background-size: cover;
+  transform: translate(0%, -22%);
 }
 .app__frontface_card-container::after {
-  content: url('./assets/card-logo.svg');
+  content:'';
   position: absolute;
-  top: 27px;
-  left: 27px;
+  top: 10%;
+  left: 6%;
+  width: 20%;
+  height: 20%;
+  background-size: contain;
+  background-image: url(/src/assets/card-logo.svg);
+  background-repeat: no-repeat;
 }
 .app__frontface_card-content {
   display: flex;
@@ -66,18 +80,9 @@
   letter-spacing: 1px;
 }
 
-.app__frontface-card-image {
-  position: absolute;
-}
-
 .app__backface_card-container {
-  top: 50%;
-  left: 20%;
-  width: 447px;
-  height: 245px;
   background-image: url('./assets/bg-card-back.png');
-  background-repeat: no-repeat;
-  background-size: cover;
+  transform: translate(25%, 90%);
 }
 
 .app__backface_card-cvc {
@@ -121,9 +126,7 @@ input:invalid {
 .error-field {
   font-size: 12px;
   color: var(--error-color);
-
 }
-
 
 button {
   font-family: 'Space Grotesk', sans-serif;
@@ -143,7 +146,7 @@ button:hover {
   opacity: 0.9;
 }
 
-.app__container-background_right-success_message{
+.app__container-background_right-success_message {
   width: 40%;
   color: white;
   display: flex;
@@ -155,7 +158,7 @@ button:hover {
   border-radius: 6px;
 }
 
-.app__container-background_right-success_message.hidden{
+.app__container-background_right-success_message.hidden {
   visibility: hidden;
 }
 
@@ -233,5 +236,141 @@ button:hover {
     -webkit-transform: translateY(-200px);
     transform: translateY(-200px);
     opacity: 0;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .app__container {
+    flex-direction: column;
+  }
+  .app__frontface_card-container,
+  .app__backface_card-container {
+    width: 264px !important;
+    height: 146px !important;
+  }
+  .app__frontface_card-container {
+    transform: translate(-14%, 32%) !important;
+  }
+  .app__backface_card-container {
+    transform: translate(-14%, -24%) !important;
+  }
+  .app__frontface_card-numbers {
+    font-size: 12px;
+  }
+  .app__frontface_card-content div {
+    font-size: 12px;
+  }
+  .app__container-background_right-success_message {
+    width: auto;
+  }
+  
+}
+@media screen and (min-width: 376px) and (max-width: 550px) {
+  .app__container {
+    flex-direction: column;
+  }
+  .app__frontface_card-container,
+  .app__backface_card-container {
+    width: 264px !important;
+    height: 146px !important;
+  }
+  .app__frontface_card-container {
+    transform: translate(-10%, 85%) !important;
+  }
+  .app__backface_card-container {
+    transform: translate(-10%, 29%) !important;
+  }
+  .app__frontface_card-numbers {
+    font-size: 12px;
+  }
+  .app__frontface_card-content div {
+    font-size: 12px;
+  }
+}
+@media screen and (min-width: 551px) and (max-width: 750px) {
+  .app__container {
+    flex-direction: column;
+  } 
+  .app__frontface_card-container,
+  .app__backface_card-container {
+    width: 292px !important;
+    height: 160px !important;
+  }
+  .app__frontface_card-container {
+    transform: translate(0, 100%);
+  }
+  .app__backface_card-container {
+    transform: translate(21%, 44%);
+  }
+  .app__frontface_card-numbers {
+    font-size: 14px;
+  }
+  .app__frontface_card-content div {
+    font-size: 12px;
+  }
+  
+}
+@media screen and (min-width: 751px) and (max-width: 850px) {
+  .app__container {
+    flex-direction: column;
+  } 
+  .app__frontface_card-container,
+  .app__backface_card-container {
+    width: 380px;
+    height: 209px;
+  }
+  .app__frontface_card-container {
+    transform: translate(0, 40%);
+  }
+  .app__backface_card-container {
+    transform: translate(21%, -16%);
+  }
+  .app__frontface_card-numbers {
+    font-size: 22px;
+  }
+  
+}
+@media screen and (min-width: 851px) and (max-width: 1200px) {
+  .app__container {
+    flex-direction: column;
+  }
+  /* .app__frontface_card-container,
+  .app__backface_card-container {
+    width: 380px;
+    height: 209px;
+  } */
+  .app__frontface_card-container {
+    transform: translate(0, 40%);
+  }
+  .app__backface_card-container {
+    transform: translate(21%, -16%);
+  }
+  .app__frontface_card-numbers {
+    font-size: 24px;
+  }
+}
+
+@media screen and (min-width: 1201px) and (max-width: 1440px) {
+  .app__container {
+    flex-direction: column;
+  }
+  .app__frontface_card-container {
+    transform: translate(0, 40%);
+  }
+  .app__backface_card-container {
+    transform: translate(21%, -16%);
+  }
+  .app__frontface_card-numbers {
+    font-size: 24px;
+  }
+}
+@media screen and (min-width: 1441px) and (max-width: 1600px) {
+  .app__frontface_card-container,
+  .app__backface_card-container {
+    width: 400px;
+    height: 219px;
+  }
+  .app__frontface_card-numbers {
+    font-size: 24px;
   }
 }

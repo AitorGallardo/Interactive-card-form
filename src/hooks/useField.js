@@ -7,7 +7,6 @@ export const useField = ({ val = '', type, customOnChange }) => {
 
   const onChange = (event) => {
     let value = event.target.value;
-    console.log('validez',event.target.validity);
     const isValid = event.target.validity.valid;
     const mismatch = event.target.validity.patternMismatch;
     const valueMissing = event.target.validity.valueMissing;

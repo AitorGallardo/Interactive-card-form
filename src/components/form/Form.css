@@ -18,7 +18,7 @@
   border: none;
 }
 .form__third-row__second-field {
-  flex: 2;
+  flex: 1;
 }
 .form__container-exp_date-label {
   text-transform: uppercase;
@@ -59,6 +59,17 @@
   font-size: 12px;
   color: var(--error-color);
 }
+@media screen and (max-width: 550px) {
+  .form__container {
+    width: 90%
+  }
+}
+@media screen and (min-width: 551px) and (max-width: 1000px) {
+  .form__container {
+    width: 60%
+  }
+}
+
 
 
 
