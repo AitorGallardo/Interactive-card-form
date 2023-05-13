@@ -41,7 +41,7 @@ function App() {
           <Form />
           <div
             className={`app__container-background_right-success_message ${
-              isFirstRender ? 'hidden' : 'vi'
+              isFirstRender ? 'hidden' : ''
             } ${isSuccessSubmit ? 'slide-top' : 'slide-reverse'}`}
           >
             <svg className='tick-icon' viewBox='0 0 24 24'>

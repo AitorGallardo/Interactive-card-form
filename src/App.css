@@ -2,6 +2,7 @@
   /* position: relative; */
   display: flex;
   height: 100vh;
+  overflow: hidden;
 }
 
 .app__container-background_left {
@@ -156,6 +157,7 @@ button:hover {
   background-color: #8bc34a;
   border: 2px solid #ddd;
   border-radius: 6px;
+  padding: .5rem;
 }
 
 .app__container-background_right-success_message.hidden {
@@ -179,62 +181,70 @@ button:hover {
 }
 @-webkit-keyframes slide-top {
   0% {
-    -webkit-transform: translateY(-200px);
-    transform: translateY(-200px);
+    /* -webkit-transform: translateY(-200px);
+    transform: translateY(-200px); */
+    -webkit-transform: translateY(100%);
+    transform: translateY(100%);
     opacity: 0;
   }
   50% {
     opacity: 0.5;
   }
   100% {
-    -webkit-transform: translateY(-250px);
-    transform: translateY(-250px);
+    /* -webkit-transform: translateY(-250px);
+    transform: translateY(-250px); */
+    -webkit-transform: translateY(-10%);
+    transform: translateY(-10%);
     opacity: 1;
   }
 }
 @keyframes slide-top {
   0% {
-    -webkit-transform: translateY(-200px);
-    transform: translateY(-200px);
+    /* -webkit-transform: translateY(-200px);
+    transform: translateY(-200px); */
+    -webkit-transform: translateY(100%);
+    transform: translateY(100%);
     opacity: 0;
   }
   50% {
     opacity: 0.5;
   }
   100% {
-    -webkit-transform: translateY(-250px);
-    transform: translateY(-250px);
+    /* -webkit-transform: translateY(-250px);
+    transform: translateY(-250px); */
+    -webkit-transform: translateY(-10%);
+    transform: translateY(-10%);
     opacity: 1;
   }
 }
 
 @-webkit-keyframes slide-rev {
   0% {
-    -webkit-transform: translateY(-250px);
-    transform: translateY(-250px);
+    -webkit-transform: translateY(-10%);
+    transform: translateY(-10%);
     opacity: 1;
   }
   50% {
     opacity: 0.5;
   }
   100% {
-    -webkit-transform: translateY(-200px);
-    transform: translateY(-200px);
+    -webkit-transform: translateY(100%);
+    transform: translateY(100%);
     opacity: 0;
   }
 }
 @keyframes slide-rev {
   0% {
-    -webkit-transform: translateY(-250px);
-    transform: translateY(-250px);
+    -webkit-transform: translateY(-10%);
+    transform: translateY(-10%);
     opacity: 1;
   }
   50% {
     opacity: 0.5;
   }
   100% {
-    -webkit-transform: translateY(-200px);
-    transform: translateY(-200px);
+    -webkit-transform: translateY(100%);
+    transform: translateY(100%);
     opacity: 0;
   }
 }
@@ -262,6 +272,13 @@ button:hover {
   }
   .app__container-background_right-success_message {
     width: auto;
+    margin: .5rem;
+    padding: 0.5rem 1rem;
+    font-size: 12px;
+  }
+  .tick-icon {
+    width: 32px;
+    height: 32px;
   }
   
 }
@@ -286,6 +303,16 @@ button:hover {
   .app__frontface_card-content div {
     font-size: 12px;
   }
+  .app__container-background_right-success_message {
+    width: auto;
+    margin: .5rem;
+    padding: 0.5rem 1rem;
+    font-size: 12px;
+  }
+  .tick-icon {
+    width: 32px;
+    height: 32px;
+  }
 }
 @media screen and (min-width: 551px) and (max-width: 750px) {
   .app__container {
@@ -308,6 +335,7 @@ button:hover {
   .app__frontface_card-content div {
     font-size: 12px;
   }
+
   
 }
 @media screen and (min-width: 751px) and (max-width: 850px) {
