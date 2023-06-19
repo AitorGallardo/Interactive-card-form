@@ -51,7 +51,7 @@
   flex-direction: column;
   justify-content: flex-end;
   background-image: url('./assets/bg-card-front.png');
-  transform: translate(0%, -22%);
+  transform: translate(38%, -22%);
 }
 .app__frontface_card-container::after {
   content:'';
@@ -83,7 +83,7 @@
 
 .app__backface_card-container {
   background-image: url('./assets/bg-card-back.png');
-  transform: translate(25%, 90%);
+  transform: translate(55%, 90%);
 }
 
 .app__backface_card-cvc {
@@ -259,10 +259,10 @@ button:hover {
     height: 146px !important;
   }
   .app__frontface_card-container {
-    transform: translate(-14%, 32%) !important;
+    transform: translate(-28%, 32%) !important;
   }
   .app__backface_card-container {
-    transform: translate(-14%, -24%) !important;
+    transform: translate(0%, -24%) !important;
   }
   .app__frontface_card-numbers {
     font-size: 12px;
@@ -292,10 +292,10 @@ button:hover {
     height: 146px !important;
   }
   .app__frontface_card-container {
-    transform: translate(-10%, 85%) !important;
+    transform: translate(-28%, 85%) !important;
   }
   .app__backface_card-container {
-    transform: translate(-10%, 29%) !important;
+    transform: translate(0%, 29%) !important;
   }
   .app__frontface_card-numbers {
     font-size: 12px;
@@ -348,10 +348,10 @@ button:hover {
     height: 209px;
   }
   .app__frontface_card-container {
-    transform: translate(0, 40%);
+    transform: translate(0, 75%);
   }
   .app__backface_card-container {
-    transform: translate(21%, -16%);
+    transform: translate(21%, 19%);
   }
   .app__frontface_card-numbers {
     font-size: 22px;
@@ -377,7 +377,7 @@ button:hover {
     font-size: 24px;
   }
 }
-
+/* 
 @media screen and (min-width: 1201px) and (max-width: 1440px) {
   .app__container {
     flex-direction: column;
@@ -391,14 +391,21 @@ button:hover {
   .app__frontface_card-numbers {
     font-size: 24px;
   }
-}
-@media screen and (min-width: 1441px) and (max-width: 1600px) {
-  .app__frontface_card-container,
+} */
+@media screen and (min-width: 1201px) and (max-width: 1800px) {
+  /* .app__frontface_card-container,
   .app__backface_card-container {
     width: 400px;
     height: 219px;
   }
   .app__frontface_card-numbers {
     font-size: 24px;
+  } */
+
+  .app__frontface_card-container {
+    transform: translate(0, 88%);
+  }
+  .app__backface_card-container {
+    transform: translate(0%, -25%);
   }
 }
