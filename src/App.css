@@ -105,7 +105,7 @@ input {
   padding: 0.5rem;
   border-radius: 6px;
   font-size: 18px;
-  border: 1px solid grey;
+  border: 1px solid #e4e4e4;
 }
 
 input:focus,
@@ -139,7 +139,7 @@ button {
   border: none;
   color: var(--white-color);
   background-color: var(--very-dark-gray-violet-color);
-  margin-top: 1rem;
+  margin-top: 2rem;
   cursor: pointer;
 }
 
@@ -392,7 +392,17 @@ button:hover {
     font-size: 24px;
   }
 } */
-@media screen and (min-width: 1201px) and (max-width: 1800px) {
+@media screen and (min-width: 1201px) and (max-width: 1350px) {
+  .app__frontface_card-container {
+  transform: translate(-15%, -22%);
+
+  }
+  .app__backface_card-container {
+  transform: translate(8%, 90%);
+
+  }
+}
+@media screen and (min-width: 1351px) and (max-width: 1700px) {
   /* .app__frontface_card-container,
   .app__backface_card-container {
     width: 400px;
@@ -403,9 +413,11 @@ button:hover {
   } */
 
   .app__frontface_card-container {
-    transform: translate(0, 88%);
+  transform: translate(0%, -22%);
+
   }
   .app__backface_card-container {
-    transform: translate(0%, -25%);
+  transform: translate(23%, 90%);
+
   }
 }
