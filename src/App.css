@@ -280,6 +280,9 @@ button:hover {
     width: 32px;
     height: 32px;
   }
+  .app__backface_card-cvc {
+    top: 43%;
+  }
   
 }
 @media screen and (min-width: 376px) and (max-width: 550px) {
@@ -312,6 +315,9 @@ button:hover {
   .tick-icon {
     width: 32px;
     height: 32px;
+  }
+  .app__backface_card-cvc {
+    top: 43%;
   }
 }
 @media screen and (min-width: 551px) and (max-width: 750px) {

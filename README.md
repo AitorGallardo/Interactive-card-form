@@ -1,6 +1,6 @@
 # Frontend Mentor - Interactive card details form solution
 
-This is a solution to the [Interactive card details form challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/interactive-card-details-form-XpS8cKZDWw). Frontend Mentor challenges help you improve your coding skills by building realistic projects. 
+This is a solution to the [Interactive card details form challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/interactive-card-details-form-XpS8cKZDWw). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
 ## Table of contents
 
@@ -33,11 +33,25 @@ Users should be able to:
 
 ### Screenshot
 
-![](./screenshot.jpg)
-
+<table>
+        <tr>
+            <td>
+                <img src="./src/assets/screenshot-mobile.png"
+                    alt="Mobile site" width="100%" title="Mobile site"/>
+            </td>
+		    <td>
+                <img src="./src/assets/screenshot-full.png"
+                    alt="Desktop site" width="100%" title="Desktop site"  />
+            </td>
+			            <td>
+                <img src="./src/assets/screenshot-active.png"
+                    alt="Active site" width="100%" title="Active site"/>
+            </td>
+        </tr>
+</table>
 Add a screenshot of your solution. The easiest way to do this is to use Firefox to view your project, right-click the page and select "Take a Screenshot". You can choose either a full-height screenshot or a cropped one based on how long the page is. If it's very long, it might be best to crop it.
 
-Alternatively, you can use a tool like [FireShot](https://getfireshot.com/) to take the screenshot. FireShot has a free option, so you don't need to purchase it. 
+Alternatively, you can use a tool like [FireShot](https://getfireshot.com/) to take the screenshot. FireShot has a free option, so you don't need to purchase it.
 
 Then crop/optimize/edit your image however you like, add it to your project, and update the file path in the image above.
 
