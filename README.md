@@ -60,7 +60,7 @@ Users should be able to:
 - CSS custom properties
 - Flexbox
 - [React](https://reactjs.org/) - JS library
-- [Next.js](https://nextjs.org/) - React framework
+- [Vite](https://vitejs.dev/) - Build tool
 
 
 ### What I learned
@@ -69,6 +69,5 @@ This challenge has helped me to improve my layout skills and to use my own hooks
 
 ## Author
 
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
-- Twitter - [@yourusername](https://www.twitter.com/yourusername)
+- Frontend Mentor - [@AitorGallardo](https://www.frontendmentor.io/profile/AitorGallardo)
 
