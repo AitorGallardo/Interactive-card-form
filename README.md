@@ -50,7 +50,7 @@ Users should be able to:
 ### Links
 
 - Solution URL: [https://www.frontendmentor.io/solutions/interactive-card-details-using-flexbox-nEKnaUfFvr](https://www.frontendmentor.io/solutions/interactive-card-details-using-flexbox-nEKnaUfFvr)
-- Live Site URL: [https://interactive-card-form-gmaitor.vercel.app/](https://interactive-card-form-gmaitor.vercel.app/)
+- Live Site URL: [https://interactive-form-gmaitor.vercel.app/](https://interactive-form-gmaitor.vercel.app/)
 
 ## My process
 
